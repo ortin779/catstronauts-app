@@ -6,17 +6,34 @@ import { humanReadableTimeFromSeconds } from '../utils/helpers';
 import{gql,useMutation} from '@apollo/client';
 
 const INCREMENT_TRACK_VIEWS = gql`
-  mutation IncrementTrackViews($trackId:ID!){
-    incrementViewCount(id:$trackId){
-      code:Int!
-      success:Boolean!
-      message:String!
-      track{
-        id:ID!
-        numberOfViews:Int!
+  mutation IncrementTrackViews($id: ID!) {
+  incrementTrackViews(id: $id) {
+    code
+    success
+    message
+    track {
+      id
+      title
+      author {
+        id
+        name
+        photo
+      }
+      thumbnail
+      length
+      modulesCount
+      description
+      numberOfViews
+      modules {
+        id
+        title
+        length
+        content
+        videoUrl
       }
     }
   }
+}
 `
 
 /**

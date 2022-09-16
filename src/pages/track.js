@@ -4,8 +4,8 @@ import {Layout, QueryResult} from '../components';
 import TrackDetail from '../components/track-detail';
 
 const GET_TRACK = gql`
-query GetTrack($trackId: ID!) {
-  track(trackId: $trackId) {
+query Track($trackId: ID!) {
+  track(id: $trackId) {
     id
     title
     author {
@@ -22,6 +22,8 @@ query GetTrack($trackId: ID!) {
       id
       title
       length
+      content
+      videoUrl
     }
   }
 }
